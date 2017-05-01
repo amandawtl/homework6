@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Agency - Start Bootstrap Theme</title>
+    <title>Amanda Leung Homework 6</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -23,6 +23,9 @@
 
     <!-- Theme CSS -->
     <link href="css/agency.min.css" rel="stylesheet">
+
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,7 +46,7 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">Homework 6</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -53,13 +56,13 @@
                         <a href="#page-top"></a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#services">Analysis</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#portfolio">Portfolio</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="#about">Homework</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#team">Team</a>
@@ -78,9 +81,9 @@
     <header>
         <div class="container">
             <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Our Studio!</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="#services" class="page-scroll btn btn-xl">Tell Me More</a>
+                <div class="intro-lead-in">Amanda Leung</div>
+                <div class="intro-heading">Google Analytics</div>
+                <a href="#services" class="page-scroll btn btn-xl">my report</a>
             </div>
         </div>
     </header>
@@ -90,10 +93,127 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Services</h2>
+                    <h2 class="section-heading">Performance Analysis</h2>
                     <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
                 </div>
             </div>
+
+    <div class="col-md-8" id="main" style="width: 700px;height:500px;"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main'));
+        var option = {
+    title: {
+        text: 'Pageviews'
+    },
+    color:['#0EEDC5'],
+    tooltip : {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'cross',
+            label: {
+                backgroundColor: '#6a7985'
+            }
+        }
+    },
+    legend: {
+        data:['pageviews']
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis : [
+        {
+            type : 'category',
+            boundaryGap : false,
+            data : ['Apr1','Apr2','Apr3','Apr4','Apr5','Apr6','Apr7','Apr8','Apr9','Apr10','Apr11','Apr12','Apr13','Apr14','Apr15','Apr16','Apr17','Apr18','Apr19','Apr20','Apr21','Apr22','Apr23','Apr24','Apr25','Apr26','Apr27','Apr28','Apr29','Apr30','May1']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'pageviews',
+            type:'line',
+            stack: '总量',
+            areaStyle: {normal: {}},
+            data:[43, 0, 3, 4, 0, 0, 0, 1, 1, 5, 1, 0, 0, 9, 0, 1, 0, 1, 0, 5, 4, 0, 0, 1, 0, 0, 11, 0, 0, 92, 18]
+        },
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+    <div class="col-md-4">
+        <p>text</p>
+    </div>
+
+    <br><br><br>
+
+    <div class="col-md-4">
+        <p>text</p>
+    </div>
+
+    <div class="col-md-8" id="main2" style="width: 700px;height:500px;"></div>
+    <script type="text/javascript">
+        var myChart = echarts.init(document.getElementById('main2'));
+        var option = {
+    title : {
+        text: 'Pageviews of different pages',
+        x:'center'
+    },
+    color:['#6ED124','#A32C36','#F2AB2B','#26EDD9','#7C63F7'],
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient: 'vertical',
+        left: 'right',
+        data: ['homepage','homework1','homework3','homework4','homework5']
+    },
+    series : [
+        {
+            name: 'pageviews',
+            type: 'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value:112, name:'homepage'},
+                {value:21, name:'homework1'},
+                {value:22, name:'homework3'},
+                {value:22, name:'homework4'},
+                {value:23, name:'homework5'}
+            ],
+            itemStyle: {
+                emphasis: {
+                    shadowBlur: 10,
+                    shadowOffsetX: 0,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+};
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+
+
+
             <div class="row text-center">
                 <div class="col-md-4">
                     <span class="fa-stack fa-4x">
@@ -226,8 +346,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading">Homework</h2>
+                    <h3 class="section-subheading text-muted">see my previous homework</h3>
                 </div>
             </div>
             <div class="row">
@@ -235,65 +355,62 @@
                     <ul class="timeline">
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/1.jpg" alt="">
+                                <a href="https://amandawtl.github.io/homework1/">
+                                <img class="img-circle img-responsive" src="https://static1.squarespace.com/static/58579fed20099ea799f856e4/t/587ef9d1440243130a379cd5/1484716501334/" alt="">
+                                </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>2009-2011</h4>
-                                    <h4 class="subheading">Our Humble Beginnings</h4>
+                                    <h4 class="subheading">Homework 1</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Explain the one of the myths in data visualisation.</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/2.jpg" alt="">
+                                <a href="https://amandawtl.github.io/homework3/">
+                                <img class="img-circle img-responsive" src="https://cdn3.iconfinder.com/data/icons/illustricon-tech-ii/512/table-chart-256.png" alt="">
+                                </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>March 2011</h4>
-                                    <h4 class="subheading">An Agency is Born</h4>
+                                    <h4 class="subheading">Homework 3</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Explain one confusing statistics concept or cases observed in the media publications.</p>
                                 </div>
                             </div>
                         </li>
                         <li>
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/3.jpg" alt="">
+                                <a href="https://amandawtl.github.io/homework4/">
+                                <img class="img-circle img-responsive" src="https://cdn3.iconfinder.com/data/icons/illustricon-tech/512/pie.graphic.circle-512.png" alt="">
+                                </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>December 2012</h4>
-                                    <h4 class="subheading">Transition to Full Service</h4>
+                                    <h4 class="subheading">Homework 4</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Exercise Javascript and jQuery for basic interaction.</p>
                                 </div>
                             </div>
                         </li>
                         <li class="timeline-inverted">
                             <div class="timeline-image">
-                                <img class="img-circle img-responsive" src="img/about/4.jpg" alt="">
+                                <a href="https://amandawtl.github.io/homework5/">
+                                <img class="img-circle img-responsive" src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcREdeq7kNLRlTE7xru3i86Gi8N5pNGV_5S8zp1jOKxAgxl7VBkb" alt="">
+                                </a>
                             </div>
                             <div class="timeline-panel">
                                 <div class="timeline-heading">
-                                    <h4>July 2014</h4>
-                                    <h4 class="subheading">Phase Two Expansion</h4>
+                                    <h4 class="subheading">Homework 5</h4>
                                 </div>
                                 <div class="timeline-body">
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                    <p class="text-muted">Use eCharts to visualise a dataset from data.gov.hk</p>
                                 </div>
-                            </div>
-                        </li>
-                        <li class="timeline-inverted">
-                            <div class="timeline-image">
-                                <h4>Be Part
-                                    <br>Of Our
-                                    <br>Story!</h4>
                             </div>
                         </li>
                     </ul>
